@@ -1,0 +1,12 @@
+﻿# Created by WatcherLAB on 2019-03-15.
+# Copyright© 2019 WatcherLAB. All rights reserved.
+
+alert tcp any any -> any any (msg:"Torjan_webshell_anuna_php PHP Webshell Maybe False Positives"; pcre:"/<\?php \$[a-z]+ = '/i"; pcre:"/\$[a-z]+=explode\(chr\(\([0-9]+[-+][0-9]+\)\)/i"; pcre:"/\$[a-z]+=\([0-9]+[-+][0-9]+\)/i";  pcre:"/if \(!function_exists\('[a-z]+'\)\)/i";  metadata:created_at 2019-03-15; sid:81000001; rev:1;)
+alert tcp any any -> any any (msg:"Torjan_webshell_chinese_spam_spreader_php Chinese Spam Spreader"; content:"User-Agent: aQ0O010O";  content:"<font color='red'><b>Connection Error!</b></font>";  pcre:"/if ?\(\$_POST\[Submit\]\) ?{/i";  metadata:created_at 2019-03-15; sid:81000002; rev:1;)
+alert tcp any any -> any any (msg:"Backdoor_Webshell_PHP_000090 weevely webshell heavily scrambled tiny"; content:"<?php"; depth:5; pcre:"/\$[a-z]{4} = \$[a-z]{4}\(\"[a-z][a-z]?\",[\s]?\"\",[\s]?\"/i";  pcre:"/\$[a-z]{4} = str_replace\(\"[a-z][a-z]?\",\"\",\"/i";  pcre:"/\$[a-z]{4}\.\$[a-z]{4}\.\$[a-z]{4}\.\$[a-z]{4}\)\)\)\; \$[a-z]{4}\(\)\;/i";  pcre:"/\$[a-z]{4}=\"[a-zA-Z0-9]{70}/i"; http_client_body; metadata:created_at 2019-03-15; sid:81000003; rev:1;)
+alert tcp any any -> any any (msg:"Backdoor_Webshell_PHP_000444 china chopper webshells php and aspx"; pcre:"/%@\sPage\sLanguage=.Jscript.%><%eval\(RequestItem\[.{,100}unsafe/i";  metadata:created_at 2019-03-15; sid:81000004; rev:1;)
+alert tcp any any -> any any (msg:"Backdoor_Webshell_PHP_000444 china chopper webshells php and aspx"; pcre:"/<?php.\@eval\(\$_POST./i";  metadata:created_at 2019-03-15; sid:81000005; rev:1;)
+#alert tcp any any -> any any (msg:"Torjan_webshell_in_image_picture_php PHP code in images"; content:"GIF87a"; depth:6; content:"<?php"; nocase; http_client_body; metadata:created_at 2019-03-19; sid:80000006; rev:1;)
+#alert tcp any any -> any any (msg:"Torjan_webshell_in_image_picture_php PHP code in images"; content:"GIF89a"; depth:6; content:"<?php"; nocase; http_client_body; metadata:created_at 2019-03-19; sid:80000007; rev:1;)
+#alert tcp any any -> any any (msg:"Torjan_webshell_in_image_picture_php PHP code in images"; pcre:"/|ff d8 ff e[0-9a-fA-F] 00 10 4a 46 49 46|/"; content:"<?php"; nocase; metadata:created_at 2019-03-19; sid:80000008; rev:1;)
+#alert tcp any any -> any any (msg:"Torjan_webshell_in_image_picture_php PHP code in images"; content:"|89 50 4e 47 0d 0a 1a 0a|"; nocase; content:"<?php"; nocase; metadata:created_at 2019-03-19; sid:80000009; rev:1;)
